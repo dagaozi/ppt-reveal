@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>手摸受教程——git</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section><img data-src="./img/git.png" />
+				<h6>手摸手教程-git使用</h6>
+				<p class='fs-22'>作者：@dagaozi</p>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+						### 内容
+						* git介绍 
+						* 为什么是git 
+						* git的安装
+						* git的工作流
+						* 分支管理
+						* 远程仓库
+						* 搭建私服
+						* 设置忽略
+						* tips
+					</textarea>
+			</section>
+			<section>
+				<section data-markdown>
+					### 为什么选择了git
+				</section>
+				<section data-markdown hidden>
+					<script type='text/template'>
+						<!-- .slide: data-background="#ff0000" -->
+							<p  class = 'fragment'  data-fragment-index = "3">Git</p>
+							<p  class = 'fragment'  data-fragment-index =  "1" >VSS</p>
+							<p  class = 'fragment'  data-fragment-index =  "2" >SVN</p>
+						   </script>
+				</section>
+				<section>
+					<h2 class='fragment fade-in-then-semi-out'>VSS</h2>
+					<h2 class='fragment fade-in'>SVN</h2>
+				</section>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					### Git 安装
+					[https://www.git-scm.com/download/](https://www.git-scm.com/download/)
+					<p class="fragment fade-in">
+					 配置用户信息 <Br/>
+					git config --global user.name 'username'<Br/>
+					git config --global user.email 'xxx@163.com'
+					</p>
+			       <script>
+				   export default {
+				   }
+				   </script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					<h3> Git仓库</h3>
+						<h6 class="fragment" data-autoslide='1000' align='left'>创建仓库</h6>
+						<ul class="fragment">
+								<li><small>git  init</small></li>
+							</ul>
+							<h6 class="fragment" data-autoslide='1000' align='left'>添加到仓库</h6>
+							<ul class="fragment">
+									<li><small>git  add</small></li>
+								<li><small>git  commit</small></li>
+								</ul>
+								<h6 class="fragment" data-autoslide='1000' align='left'>查看状态</h6>
+							<ul class="fragment" >
+									<li ><small>git  status</small></li>
+								</ul>
+						<script>
+								export default {
+								}
+								</script>
+			</section>
+			<section>
+			<section>
+					<h3>git工作流</h3>
+				<img data-src="./img/gitWorkStream.jpg" />
+			</section>
+			<section>
+					<h3>时光机</h3>
+					<h6 class="fragment" data-autoslide='1000' align='left'>工作区回滚</h6>
+					 <p class="fragment"><small>git checkout -- 文件名</small></p>
+					<h6 class="fragment" data-autoslide='1000' align='left'>暂存区回滚</h6>
+					<p class="fragment"><small>git reset 文件名</small></p>
+					<h6 class="fragment" data-autoslide='1000' align='left'>仓库回滚</h6>
+					<p class="fragment"><small>git reset --hard 提交版本号(工作区/暂存区/仓库都回滚)</small></p>
+					<p class="fragment"><small>git reset --soft 提交版本号(只回滚仓库)</small></p>
+					<h6 class="fragment" data-autoslide='1000' align='left'>全都不要了</h6>
+					<p class="fragment"><small>git rm 文件名</small></p>
+					<p class="fragment"><small>git commit -m "都不要了"</small></p>
+			</section>
+			<section>
+					<h3>git工作流补充版</h3>
+				<img data-src="./img/git_gzl2.jpg" />
+			</section>
+		</section>
+		<section>
+				<section>
+						<h3>git分支管理</h3>
+						<h6 align="left">时间线</h6>
+						<video data-autoplay src="./img/master-branch-forward.mp4"></video>
+				</section>
+			<section>
+					<h6 align="left">时间线</h6>
+					<video data-autoplay src="./img/master-branch-forward.mp4"></video>
+			</section>
+			<section>
+					<h6  align="left">创建分支</h6>
+					<video data-autoplay src="./img/master-and-dev-ff.mp4"></video>
+			</section>
+			<section>
+					<h3>git分支管理</h3>
+					<p class="fragment"><small>创建分支: git branch feature_name</small></p>
+					<p class="fragment"><small>切换分支: git checkout feature_name</small></p>
+					<p class="fragment"><small>(等于上面两句: git checkout -b feature_name)</small></p>
+					<p class="fragment"><small>敲代码...提交: coding....add....commit......</small></p>
+					<p class="fragment"><small>切回主分支: git checkout master</small></p>
+					<p class="fragment"><small>合并分支: git merge feature_name</small></p>
+					<p class="fragment"><small>删除无用分支: git branch -d  feature_name</small></p>
+			</section>
+		</section>
+			<section>
+					
+					<section>
+							<h3>远程仓库</h3>
+							<h6 class="fragment" data-autoslide='1000' align='left'>获取远程仓库</h6>
+							<ul class="fragment">
+									<li><small>git  clone   地址.....</small></li>
+								</ul>
+								<h6 class="fragment" data-autoslide='1000' align='left'>添加远程仓库</h6>
+							<ul class="fragment">
+									<li><small>git remote add origin 地址.....</small></li>
+									<li><small>git pull origin master</small></li>
+									<li><small>git push -u origin master</small></li>
+								</ul>
+						</section>
+			
+					<section>
+							<h3>生成SSH key</h3>
+						<p>ssh-keygen -t rsa -C "dagaozi@163.com"</p>
+						<p>个人目录下的隐藏文件夹./ssh</p>
+						<p>验证是否联通: ssh -T git@github.com</p>
+					</section>
+					<section>
+							<h3>git 私有仓库搭建</h3>
+							<img data-src="./img/gitserver.jpg" />
+						</section>
+				
+			</section>
+			<section  data-markdown>
+					<h3>git 设置忽略 (.gitignore)</h3>
+					<textarea data-template>
+							[https://www.gitignore.io/](https://www.gitignore.io/)
+						</textarea>
+				
+			</section>
+			<!-- <section id="fragments">
+				<h2>Fragments</h2>
+				<p>Hit the next arrow...</p>
+				<p class="fragment" data-autoslide='4000'>... After 10 seconds the next fragment will be shown ...
+				</p>
+				<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span
+						class="fragment">slide.</span></p>
+
+				<aside class="notes">
+					This slide has fragments which are also stepped through in the notes window.
+				</aside>
+			</section> -->
+			<section><img data-src="./img/git_zl.jpg" /></section>
+			<section data-markdown>
+				<textarea data-template>
+							### git客户端
+							* [tortoisegit](https://tortoisegit.org/download/)
+							* [gitextensions](https://sourceforge.net/projects/gitextensions/)
+							* [SourceTree](https://www.sourcetreeapp.com/enterprise) <font size=6>[(跳过注册)](https://blog.csdn.net/sjt223857130/article/details/87895089)</font>    
+							* [Tower](https://www.git-tower.com/)
+						</textarea>
+			</section>
+			<section data-markdown>
+					<textarea data-template>
+							### 总结
+							* git介绍 安装
+							* 为什么是git 
+							* 初始化仓库
+							* git的工作流
+							* 分支管理
+							* 远程仓库
+							* 搭建私服
+							* 设置忽略
+							* tips
+						</textarea>
+				</section>
+			<section   data-background-iframe = "https://learngitbranching.js.org/?demo">
+			<P><a style="float:right;padding:20px;background:#000;opacity:0.8;color:#FFF" href="https://learngitbranching.js.org/?demo">learngitbranching</a></P>
+
+			</section>
+			<!-- <section data-markdown  data-background-iframe = "https://learngitbranching.js.org/?demo"  data-background-interactive >
+				### 试一把
+				[https://learngitbranching.js.org/?demo](https://learngitbranching.js.org/?demo)
+				<h3>dafdafadsf </h3>
+
+			</section> -->
+			<section data-markdown>
+					### 谢谢
+				</section>
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
